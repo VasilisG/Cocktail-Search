@@ -12,3 +12,6 @@ class App extends Component {
 }
 
 export default App;
+
+// npm install react-router-dom
+// https://blog.logrocket.com/how-to-use-bootstrap-with-react-a354715d1121/
