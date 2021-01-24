@@ -7,3 +7,5 @@ class Ingredient extends Component {
         )
     }
 }
+
+export default Ingredient;
