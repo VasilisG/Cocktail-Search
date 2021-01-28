@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Switch, Link, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Link, Route, Redirect} from 'react-router-dom';
+import Home from './Pages/Home';
 import Cocktail from './Pages/Cocktail';
 import Ingredient from './Pages/Ingredient';
 
@@ -12,7 +13,7 @@ class Header extends Component {
                     <h1>Cocktail Junkie</h1>
                 </div>
                 <Router>
-                    <div class="navigation-container">
+                    <div className="navigation-container">
                         <nav className="navigation">
                             <ul className="nav-items">
                                 <li className="nav-item">
@@ -27,6 +28,12 @@ class Header extends Component {
                             </ul>                
                         </nav>
                         <Switch>
+                            <Route exact path="/">
+                                <Redirect to="/home"/>
+                            </Route>
+                            <Route path="/home">
+                                <Home/>
+                            </Route>
                             <Route path="/cocktails">
                                 <Cocktail/>
                             </Route>
