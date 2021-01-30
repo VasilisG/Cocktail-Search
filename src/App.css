@@ -152,7 +152,7 @@ footer {
 .ingredient-item {
   text-align: center;
   padding: 30px;
-  background-color: #bfbfbf;
+  background-color:#54b2c2;
   font-weight: bold;
   letter-spacing: 0.7px;
   box-shadow: 0px 0px 1px 0px #000;
@@ -162,10 +162,10 @@ footer {
 }
 
 .ingredient-item:hover {
-  background-color:#e8e8e8;
+  background-color:#6de4f9;
 }
 
 .ingredient-item:active {
-  background-color: #fff;
+  background-color: #e4fbff;
   box-shadow: 0px 0px 1px 0px #000;
 }
