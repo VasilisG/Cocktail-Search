@@ -4,7 +4,7 @@ class Cocktail extends Component {
     render(){
         return (
             <main>
-                <h1 className="page-title">Cocktail Page</h1>
+                <h1 className="page-title">Cocktails</h1>
             </main>
         );
     }
