@@ -15,14 +15,22 @@ class IngredientItem extends Component {
     }
 
     componentDidMount() {
+
+        var dataId, dataType, dataAlcohol;
+
         fetch(this.INGREDIENT_URL + this.state.title)
         .then(response => response.json())
         .then(data => {
             data = data['ingredients'][0];
+
+            dataId = data['idIngredient'] ? data['idIngredient'] : "-";
+            dataType = data['strType'] ? data['strType'] : "-";
+            dataAlcohol = data['strAlcohol'] ? data['strAlcohol'] : "-";
+
             this.setState({
-                id : data['idIngredient'],
-                type : data['strType'],
-                alcohol : data['strAlcohol']
+                id : dataId,
+                type : dataType,
+                alcohol : dataAlcohol
             });
         })
     }
@@ -30,11 +38,17 @@ class IngredientItem extends Component {
     render() {
         return (
             <div className="ingredient-item">
-                <div className="main">
-                    <p className="item title">{this.state.title}</p>
-                    <p className="item type">{this.state.type}</p>
-                    <p className="item alcohol">{this.state.alcohol}</p>
-                    <p className="item id">{this.state.id}</p>
+                <div className="ingredient-item-inner">
+                    <div className="main-title">
+                        <p className="item title">{this.state.title}</p>
+                    </div>
+                    <div className="main-info">
+                        <div className="main-info-inner">
+                            <p className="item type"><span>Alcohol type: </span>{this.state.type}</p>
+                            <p className="item alcohol"><span>Is alcohol: </span>{this.state.alcohol}</p>
+                            <p className="item id"><span>Ingredient ID: </span>{this.state.id}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         )

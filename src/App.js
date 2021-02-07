@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
-import Home from './Pages/Home';
 import Cocktail from './Pages/Cocktail';
 import Ingredient from './Pages/Ingredient';
 
@@ -13,8 +12,7 @@ class App extends Component {
     return (
       <Router>
           <Header/>
-          <Route exact path="/"><Redirect to="/home"/></Route>
-          <Route path="/home"><Home/></Route>
+          <Route exact path="/"><Redirect to="/cocktails"/></Route>
           <Route path="/cocktails"><Cocktail/></Route>
           <Route path="/ingredients"><Ingredient/></Route>
           <Footer/>

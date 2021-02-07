@@ -13,9 +13,6 @@ class Header extends Component {
                     <nav className="navigation">
                         <ul className="nav-items">
                             <li className="nav-item">
-                                <NavLink to="/home" activeClassName="active-nav-item">Home</NavLink>
-                            </li>
-                            <li className="nav-item">
                                 <NavLink to="/cocktails" activeClassName="active-nav-item">Cocktails</NavLink>
                             </li>
                             <li className="nav-item">

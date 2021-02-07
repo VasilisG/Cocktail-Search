@@ -36,5 +36,5 @@ class Ingredient extends Component {
 export default Ingredient;
 
 /**
- * List all ingredients and their info.
+ * List all ingredients and their info. [DONE]
  */
