@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
+import SearchCockTail from '../Comps/SearchCockTail';
 
 class Cocktail extends Component {
     render(){
         return (
             <main>
                 <h1 className="page-title">Cocktails</h1>
+                <SearchCockTail/>
             </main>
         );
     }

@@ -218,3 +218,104 @@ footer {
 .ingredient-item .main-title:hover {
   background-color:#6de4f9;
 }
+
+.search-cocktail-form, .random-cocktail-container {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.cocktail-name-input {
+  width: 75%;
+  padding: 10px;
+  box-shadow: none;
+  outline: none;
+  background: #fff0;
+  border: 2px solid #7b2053;
+  border-right: none;
+  font-size: 20px;
+}
+
+::placeholder {
+  color: #7b2053;
+  font-style: italic;
+  opacity: 0.3;
+}
+
+.cocktail-name-search-button, .random-cocktail {
+  border: 2px solid #7b2053;
+  background-color: #7b2053;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: #fff;
+  text-shadow: 0px 1px #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.4s ease;
+}
+
+.cocktail-name-search-button {
+  width: 20%;
+  padding: 10px;
+}
+
+.cocktail-name-search-button:hover, .random-cocktail:hover {
+  background-color:#e03596;
+  border: 2px solid #e03596;
+}
+
+.random-cocktail-container {
+  text-align: center;
+}
+
+.random-cocktail {
+  padding: 10px;
+  width: 40%;
+  margin-bottom: 30px;
+}
+
+.cocktail-alphabet {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 0.75px;
+}
+
+.cocktail-alphabet-title {
+  margin: 0;
+}
+
+.cocktail-letter-container {
+  width: 50%;
+  margin: auto;
+  display: flex;
+}
+
+.cocktail-letter-inner-container {
+  display: flex;
+  margin: auto;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 30px 0px;
+  border-bottom: 2px solid #000;
+}
+
+.cocktail-letter {
+  border: none;
+  margin: 5px;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  background-color: #7b2053;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 0px 1px #000;
+  cursor: pointer;
+  transition: 0.4s ease;
+}
+
+.cocktail-letter:hover {
+  background-color:#e03596;
+}
