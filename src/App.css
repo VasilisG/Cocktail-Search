@@ -235,11 +235,13 @@ footer {
   border: 2px solid #7b2053;
   border-right: none;
   font-size: 20px;
+  letter-spacing: 1px;
 }
 
 ::placeholder {
   color: #7b2053;
-  font-style: italic;
+  font-style: normal;
+  letter-spacing: 1px;
   opacity: 0.3;
 }
 
@@ -318,4 +320,8 @@ footer {
 
 .cocktail-letter:hover {
   background-color:#e03596;
+}
+
+.filter-cocktail-container {
+  text-align: center;
 }

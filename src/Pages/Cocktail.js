@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import SearchCockTail from '../Comps/SearchCockTail';
+import FilterCockTail from '../Comps/FilterCockTail';
 
 class Cocktail extends Component {
     render(){
@@ -7,6 +8,7 @@ class Cocktail extends Component {
             <main>
                 <h1 className="page-title">Cocktails</h1>
                 <SearchCockTail/>
+                <FilterCockTail/>
             </main>
         );
     }
