@@ -53,6 +53,20 @@ header {
   box-shadow: 0px 1px 2px 0px #000;
 }
 
+select {
+  border-radius: 30px;
+  overflow: hidden;
+  background: #7b2053;
+  border: 2px solid #7b2053;
+  color: #fff;
+  padding: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  text-shadow: 0px 1px #000;
+  text-align: center;
+  width: 100%;
+}
+
 #root {
   background-color: #fffad5;
 }
@@ -330,4 +344,17 @@ footer {
 
 .filter-cocktail-container {
   text-align: center;
+}
+
+.filter-cocktail-container-inner {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: auto;
+  padding: 30px 0;
+  border-bottom: 2px solid #000;
+}
+
+.filter-cocktail-container-inner > div {
+  width: 30%;
 }
