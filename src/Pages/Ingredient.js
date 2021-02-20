@@ -24,8 +24,8 @@ class Ingredient extends Component {
     render(){
         return (
             <main>
-                <h1 class="page-title">Ingredients</h1>
-                <div class="ingredient-list">
+                <h1 className="page-title">Ingredients</h1>
+                <div className="ingredient-list">
                     {this.state['ingredients'].map((elem, index) => <IngredientItem key={index} title={elem['strIngredient1']}/>)}
                 </div>
             </main>

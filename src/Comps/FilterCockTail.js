@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import FilterTypeDropdown from '../Comps/Filter/FilterTypeDropdown';
+import FilterCategoryDropdown from '../Comps/Filter/FilterCategoryDropdown';
+import FilterGlassDropdown from '../Comps/Filter/FilterGlassDropdown';
 
 class FilterCockTail extends Component {
 
@@ -13,22 +16,14 @@ class FilterCockTail extends Component {
 
     render(){
         return (
-            <div class="filter-cocktail-container">
-                <div class="filter-cocktail-title-container">
+            <div className="filter-cocktail-container">
+                <div className="filter-cocktail-title-container">
                     <h2>Filter cocktail</h2>
                 </div>
-                <div class="filter-cocktail-container-inner">
-                    <div class="filter-type-container">
-                        <select>
-                            <option value="alcohol">Alcohol</option>
-                            <option value="category">Category</option>
-                            <option value="ingredient">Ingredient</option>
-                            <option value="glass">Glass</option>
-                        </select>
-                    </div>
-                    <div class="filter-option-container">
-
-                    </div>
+                <div className="filter-cocktail-container-inner">
+                    <FilterTypeDropdown/>
+                    <FilterCategoryDropdown/>
+                    <FilterGlassDropdown/>
                 </div>
             </div>
         );

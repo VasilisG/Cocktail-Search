@@ -13,23 +13,23 @@ class SearchCockTail extends Component {
 
     render(){
         return (
-            <div class="search-cocktail-container">
-                <div class="search-inner-container">
-                    <form class="search-cocktail-form">
-                        <input type="text" class="cocktail-name-input" placeholder="Enter cocktail name..."/>
-                        <button class="cocktail-name-search-button">Search</button>
+            <div className="search-cocktail-container">
+                <div className="search-inner-container">
+                    <form className="search-cocktail-form">
+                        <input type="text" className="cocktail-name-input" placeholder="Enter cocktail name..."/>
+                        <button className="cocktail-name-search-button">Search</button>
                     </form>
-                    <div class="random-cocktail-container">
-                        <button class="random-cocktail">Pick a random cocktail</button>
+                    <div className="random-cocktail-container">
+                        <button className="random-cocktail">Pick a random cocktail</button>
                     </div>
                 </div>
-                <div class="cocktail-alphabet">
-                    <div class="cocktail-alphabet-title-container">
-                        <p class="cocktail-alphabet-title">Get cocktails by letter:</p>
+                <div className="cocktail-alphabet">
+                    <div className="cocktail-alphabet-title-container">
+                        <p className="cocktail-alphabet-title">Get cocktails by letter:</p>
                     </div>
-                    <div class="cocktail-letter-container">
-                        <div class="cocktail-letter-inner-container">
-                            {'abcdefghijklmnopqrstuvwxyz'.split('').map((elem) => <button class="cocktail-letter" letter={elem}>{elem.toUpperCase()}</button>)}
+                    <div className="cocktail-letter-container">
+                        <div className="cocktail-letter-inner-container">
+                            {'abcdefghijklmnopqrstuvwxyz'.split('').map((elem) => <button key={elem} className="cocktail-letter" letter={elem}>{elem.toUpperCase()}</button>)}
                         </div>
                     </div>
                 </div>
