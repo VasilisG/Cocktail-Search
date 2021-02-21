@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import SearchCockTail from '../Comps/SearchCockTail';
 import FilterCockTail from '../Comps/FilterCockTail';
+import CocktailResults from '../CocktailResults';
 
 class Cocktail extends Component {
     render(){
