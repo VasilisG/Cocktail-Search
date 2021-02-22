@@ -16,7 +16,7 @@ class FilterGlassDropdown extends Component {
         .then(response => response.json())
         .then(data => {
             var glasses = data['drinks'];
-            glasses = glasses.filter(elem => elem['strGlass'].length > 0).map(elem => elem['strGlass']);
+            glasses = glasses.map(elem => elem['strGlass']);
             this.setState({'glasses' : glasses});
         });
     }
