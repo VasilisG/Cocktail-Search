@@ -6,6 +6,7 @@ class FilterTypeDropdown extends Component {
         return (
             <div className="filter-type-container">
                 <select>
+                    <option value="">- Select Type -</option>
                     <option value="alcohol">Alcohol</option>
                     <option value="category">Category</option>
                     <option value="ingredient">Ingredient</option>

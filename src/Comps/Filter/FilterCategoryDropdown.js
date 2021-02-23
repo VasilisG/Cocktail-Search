@@ -16,7 +16,8 @@ class FilterCategoryDropdown extends Component {
         .then(response => response.json())
         .then(data => {
             var drinks = data['drinks'];
-            drinks = drinks.map(elem => elem['strCategory']);
+            drinks = drinks.filter(elem => elem['strCategory'] !== '').map(elem => ({'value' : elem['strCategory'], 'label' : elem['strCategory']}));
+            drinks.unshift({'value' : '', 'label' : '- Select Category -'});
             this.setState({'categories' : drinks});
         });
     }
@@ -24,7 +25,7 @@ class FilterCategoryDropdown extends Component {
     renderDropdown() {
         return (
             <select>
-                {this.state['categories'].map(element => <option key={element} value={element}>{element}</option>)}
+                {this.state['categories'].map(element => <option key={element.value} value={element.value}>{element.label}</option>)}
             </select>
         );
     }

@@ -16,7 +16,8 @@ class FilterGlassDropdown extends Component {
         .then(response => response.json())
         .then(data => {
             var glasses = data['drinks'];
-            glasses = glasses.map(elem => elem['strGlass']);
+            glasses = glasses.filter(elem => elem['strGlass'] !== '').map(elem => ({'value' : elem['strGlass'], 'label' : elem['strGlass']}));
+            glasses.unshift({'value' : '', 'label' : '- Select Glass -'});
             this.setState({'glasses' : glasses});
         });
     }
@@ -24,7 +25,7 @@ class FilterGlassDropdown extends Component {
     renderDropdown() {
         return (
             <select>
-                {this.state['glasses'].map(element => <option key={element} value={element}>{element}</option>)}
+                {this.state['glasses'].map(element => <option key={element.value} value={element.value}>{element.label}</option>)}
             </select>
         );
     }
