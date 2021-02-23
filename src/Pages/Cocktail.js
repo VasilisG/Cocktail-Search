@@ -10,6 +10,7 @@ class Cocktail extends Component {
                 <h1 className="page-title">Cocktails</h1>
                 <SearchCockTail/>
                 <FilterCockTail/>
+                <CocktailResults/>
             </main>
         );
     }

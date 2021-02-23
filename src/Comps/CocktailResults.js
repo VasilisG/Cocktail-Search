@@ -4,8 +4,8 @@ class CocktailResults extends Component {
 
     render() {
         return (
-            <div class="cocktail-items-container">
-                <ul class="cocktail-items">
+            <div className="cocktail-items-container">
+                <ul className="cocktail-items">
 
                 </ul>
             </div>
