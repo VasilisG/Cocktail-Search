@@ -9,7 +9,7 @@ class SearchCockTail extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name : '',
+            lastSearchName : '',
             drinks : []
         };
 
@@ -20,38 +20,46 @@ class SearchCockTail extends Component {
     }
 
     handleChange(event) {
-        this.setState({name : event.target.value});
+        this.setState({lastSearchName : event.target.value});
+    }
+
+    fetchCocktails(url) {
+        fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            var drinks = data['drinks'].slice(0,10);
+            drinks = drinks.map(function(drink) {
+                return {
+                    'name' : drink['strDrink'],
+                    'category' : drink['strCategory'],
+                    'alcoholic' : drink['strAlcoholic'],
+                    'instructions' : drink['strInstructions'],
+                    'image' : drink['strDrinkThumb']
+                }
+            });
+            this.setState({drinks : drinks});
+            console.log(this.state);
+        });
     }
 
     searchByName(event) {
         var fieldName = this.state.name;
         if(fieldName.length > 0){
-            fetch(this.SEARCH_BY_NAME_URL + fieldName)
-            .then(response => response.json())
-            .then(data => {
-                console.log('Search bar data.');
-                console.log(data);
-            });
+            this.fetchCocktails(this.SEARCH_BY_NAME_URL + fieldName)
         }
         event.preventDefault();
     }
 
     searchByLetter(event){
-        fetch(this.SEARCH_BY_LETTER_URL + event.target.value)
-        .then(response => response.json())
-        .then(data => {
-            console.log('Letter button data.');
-            console.log(data);
-        });
+        this.fetchCocktails(this.SEARCH_BY_LETTER_URL + event.target.value)
     }
 
-    getRandomCocktail(event) {
-        fetch(this.GET_RANDOM_COCKTAIL_URL)
-        .then(response => response.json())
-        .then(data => {
-            console.log('Random cocktail data.');
-            console.log(data);
-        })
+    getRandomCocktail() {
+        this.fetchCocktails(this.GET_RANDOM_COCKTAIL_URL);
+    }
+
+    getDrinks() {
+        return this.state.drinks;
     }
 
     render(){
