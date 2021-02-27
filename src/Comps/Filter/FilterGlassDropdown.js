@@ -3,11 +3,13 @@ import React, {Component} from 'react';
 class FilterGlassDropdown extends Component {
 
     COCKTAIL_GLASSES_URL = "https://www.thecocktaildb.com/api/json/v1/1/list.php?g=list";
+    COCKTAIL_GLASSES_FILTER_URL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=";
 
     constructor(props){
         super(props);
         this.state = {
-            'glasses' : []
+            glasses : [],
+            drinks : []
         };
     }
 
@@ -19,6 +21,26 @@ class FilterGlassDropdown extends Component {
             glasses = glasses.filter(elem => elem['strGlass'] !== '').map(elem => ({'value' : elem['strGlass'], 'label' : elem['strGlass']}));
             glasses.unshift({'value' : '', 'label' : '- Select Glass -'});
             this.setState({'glasses' : glasses});
+        });
+    }
+
+    getCocktails(event) {
+        var glass = event.target.value;
+        fetch(this.COCKTAIL_GLASSES_FILTER_URL + glass)
+        .then(response => response.json())
+        .then(data => {
+            var drinks = data['drinks'].slice(0,10);
+            drinks = drinks.map(function(drink) {
+                return {
+                    'name' : drink['strDrink'],
+                    'category' : drink['strCategory'],
+                    'alcoholic' : drink['strAlcoholic'],
+                    'instructions' : drink['strInstructions'],
+                    'image' : drink['strDrinkThumb']
+                }
+            });
+            this.setState({drinks : drinks});
+            this.props.getCocktails(drinks);
         });
     }
 

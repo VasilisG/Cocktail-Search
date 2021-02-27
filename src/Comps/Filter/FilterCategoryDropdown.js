@@ -8,7 +8,8 @@ class FilterCategoryDropdown extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            'categories': []
+            categories : [],
+            drinks : []
         };
     }
 
@@ -20,6 +21,26 @@ class FilterCategoryDropdown extends Component {
             drinks = drinks.filter(elem => elem['strCategory'] !== '').map(elem => ({'value' : elem['strCategory'], 'label' : elem['strCategory']}));
             drinks.unshift({'value' : '', 'label' : '- Select Category -'});
             this.setState({'categories' : drinks});
+        });
+    }
+
+    getCocktails(event){
+        var category = event.target.value;
+        fetch(this.COCKTAIL_CATEGORIES_FILTER_URL + category)
+        .then(response => response.json())
+        .then(data => {
+            var drinks = data['drinks'].slice(0,10);
+            drinks = drinks.map(function(drink) {
+                return {
+                    'name' : drink['strDrink'],
+                    'category' : drink['strCategory'],
+                    'alcoholic' : drink['strAlcoholic'],
+                    'instructions' : drink['strInstructions'],
+                    'image' : drink['strDrinkThumb']
+                }
+            });
+            this.setState({drinks : drinks});
+            this.props.getCocktails(drinks);
         });
     }
 
