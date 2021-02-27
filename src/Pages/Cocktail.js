@@ -4,13 +4,25 @@ import FilterCockTail from '../Comps/FilterCockTail';
 import CocktailResults from '../Comps/CocktailResults';
 
 class Cocktail extends Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            cocktails : []
+        };
+    }
+
+    setCocktails(cocktails) {
+        this.setState({cocktails : cocktails});
+    }
+
     render(){
         return (
             <main>
                 <h1 className="page-title">Cocktails</h1>
-                <SearchCockTail/>
+                <SearchCockTail callBack={this.setCocktails.bind(this)}/>
                 <FilterCockTail/>
-                <CocktailResults/>
+                <CocktailResults cocktails={this.state.cocktails}/>
             </main>
         );
     }

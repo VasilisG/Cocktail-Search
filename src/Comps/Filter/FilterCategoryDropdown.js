@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 class FilterCategoryDropdown extends Component {
 
     COCKTAIL_CATEGORIES_URL = "https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list";
+    COCKTAIL_CATEGORIES_FILTER_URL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=";
 
     constructor(props) {
         super(props);

@@ -38,16 +38,17 @@ class SearchCockTail extends Component {
                 }
             });
             this.setState({drinks : drinks});
-            console.log(this.state);
+            this.props.callBack(drinks);
         });
     }
 
     searchByName(event) {
-        var fieldName = this.state.name;
-        if(fieldName.length > 0){
-            this.fetchCocktails(this.SEARCH_BY_NAME_URL + fieldName)
-        }
         event.preventDefault();
+        var fieldName = event.target.value;
+        if(fieldName.length > 0){
+            this.fetchCocktails(this.SEARCH_BY_NAME_URL + fieldName);
+            this.setState({lastSearchName : fieldName});
+        }
     }
 
     searchByLetter(event){
@@ -56,10 +57,6 @@ class SearchCockTail extends Component {
 
     getRandomCocktail() {
         this.fetchCocktails(this.GET_RANDOM_COCKTAIL_URL);
-    }
-
-    getDrinks() {
-        return this.state.drinks;
     }
 
     render(){
@@ -72,7 +69,7 @@ class SearchCockTail extends Component {
                 <div className="search-inner-container">
                     <form className="search-cocktail-form" onSubmit={this.searchByName}>
                         <input type="text" className="cocktail-name-input" placeholder="Enter cocktail name..." onChange={this.handleChange}/>
-                        <button className="cocktail-name-search-button">Search</button>
+                        <button className="cocktail-name-search-button" onClick={(event) => {event.preventDefault();}}>Search</button>
                     </form>
                     <div className="random-cocktail-container">
                         <button className="random-cocktail" onClick={this.getRandomCocktail}>Pick a random cocktail</button>
