@@ -9,8 +9,8 @@ class FilterCategoryDropdown extends Component {
         super(props);
         this.state = {
             categories : [],
-            drinks : []
         };
+        this.getCocktails = this.getCocktails.bind(this);
     }
 
     componentDidMount() {
@@ -26,27 +26,28 @@ class FilterCategoryDropdown extends Component {
 
     getCocktails(event){
         var category = event.target.value;
-        fetch(this.COCKTAIL_CATEGORIES_FILTER_URL + category)
-        .then(response => response.json())
-        .then(data => {
-            var drinks = data['drinks'].slice(0,10);
-            drinks = drinks.map(function(drink) {
-                return {
-                    'name' : drink['strDrink'],
-                    'category' : drink['strCategory'],
-                    'alcoholic' : drink['strAlcoholic'],
-                    'instructions' : drink['strInstructions'],
-                    'image' : drink['strDrinkThumb']
-                }
+        if(category !== ''){
+            fetch(this.COCKTAIL_CATEGORIES_FILTER_URL + category)
+            .then(response => response.json())
+            .then(data => {
+                var drinks = data['drinks'].slice(0,10);
+                drinks = drinks.map(function(drink) {
+                    return {
+                        'name' : drink['strDrink'],
+                        'category' : drink['strCategory'],
+                        'alcoholic' : drink['strAlcoholic'],
+                        'instructions' : drink['strInstructions'],
+                        'image' : drink['strDrinkThumb'] + '/preview'
+                    }
+                });
+                this.props.callBack(drinks);
             });
-            this.setState({drinks : drinks});
-            this.props.getCocktails(drinks);
-        });
+        }
     }
 
     renderDropdown() {
         return (
-            <select>
+            <select onChange={this.getCocktails}>
                 {this.state['categories'].map(element => <option key={element.value} value={element.value}>{element.label}</option>)}
             </select>
         );

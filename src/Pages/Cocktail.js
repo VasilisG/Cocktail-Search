@@ -21,7 +21,7 @@ class Cocktail extends Component {
             <main>
                 <h1 className="page-title">Cocktails</h1>
                 <SearchCockTail callBack={this.setCocktails.bind(this)}/>
-                <FilterCockTail/>
+                <FilterCockTail callBack={this.setCocktails.bind(this)}/>
                 <CocktailResults cocktails={this.state.cocktails}/>
             </main>
         );

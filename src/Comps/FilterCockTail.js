@@ -5,15 +5,8 @@ import FilterGlassDropdown from '../Comps/Filter/FilterGlassDropdown';
 
 class FilterCockTail extends Component {
 
-    constructor(props){
-        super(props);
-        this.state = {
-            cocktails : []
-        };
-    }
-
-    getCocktails(cocktails){
-        this.setState({cocktails : cocktails});
+    setCocktails(cocktails){
+        this.props.callBack(cocktails);
     }
 
     render(){
@@ -23,9 +16,9 @@ class FilterCockTail extends Component {
                     <h2>Filter cocktail</h2>
                 </div>
                 <div className="filter-cocktail-container-inner">
-                    <FilterTypeDropdown callBack={this.getCocktails.bind(this)}/>
-                    <FilterCategoryDropdown callBack={this.getCocktails.bind(this)}/>
-                    <FilterGlassDropdown callBack={this.getCocktails.bind(this)}/>
+                    <FilterTypeDropdown callBack={this.setCocktails.bind(this)}/>
+                    <FilterCategoryDropdown callBack={this.setCocktails.bind(this)}/>
+                    <FilterGlassDropdown callBack={this.setCocktails.bind(this)}/>
                 </div>
             </div>
         );

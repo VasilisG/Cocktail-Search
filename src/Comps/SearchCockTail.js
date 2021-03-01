@@ -34,7 +34,7 @@ class SearchCockTail extends Component {
                     'category' : drink['strCategory'],
                     'alcoholic' : drink['strAlcoholic'],
                     'instructions' : drink['strInstructions'],
-                    'image' : drink['strDrinkThumb']
+                    'image' : drink['strDrinkThumb'] + '/preview'
                 }
             });
             this.setState({drinks : drinks});

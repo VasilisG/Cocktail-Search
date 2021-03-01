@@ -37,7 +37,7 @@
   }
 }
 
-h1 {
+h1, h2, p {
   margin: 0;
 }
 
@@ -358,4 +358,34 @@ footer {
 
 .filter-cocktail-container-inner > div {
   width: 30%;
+}
+
+.cocktail-item {
+  list-style: none;
+  display: flex;
+  padding: 20px;
+  margin-bottom: 20px;
+  color: #fff;
+  background-color: #7b2053;
+}
+
+.cocktail-item .image {
+  margin-right: 20px;
+}
+
+.cocktail-item .title, .cocktail-item .category, .cocktail-item .type, .cocktail-item .instructions {
+  margin-bottom: 10px;
+}
+
+.cocktail-item .info {
+  font-weight: lighter;
+  text-align: justify;
+}
+
+.cocktail-item strong {
+  font-weight: bold;
+}
+
+.cocktail-item img {
+  border: 1px solid #fff;
 }
