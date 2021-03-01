@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 class CockTailItem extends Component {
 
     render() {
-        console.log(this.props);
         return (
             <li className="cocktail-item">
                 <div className="image">
