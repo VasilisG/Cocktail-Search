@@ -44,10 +44,8 @@ class SearchCockTail extends Component {
 
     searchByName(event) {
         event.preventDefault();
-        var fieldName = event.target.value;
-        if(fieldName.length > 0){
-            this.fetchCocktails(this.SEARCH_BY_NAME_URL + fieldName);
-            this.setState({lastSearchName : fieldName});
+        if(this.state.lastSearchName.length > 0){
+            this.fetchCocktails(this.SEARCH_BY_NAME_URL + this.state.lastSearchName);
         }
     }
 
@@ -69,7 +67,7 @@ class SearchCockTail extends Component {
                 <div className="search-inner-container">
                     <form className="search-cocktail-form" onSubmit={this.searchByName}>
                         <input type="text" className="cocktail-name-input" placeholder="Enter cocktail name..." onChange={this.handleChange}/>
-                        <button className="cocktail-name-search-button" onClick={(event) => {event.preventDefault();}}>Search</button>
+                        <button className="cocktail-name-search-button" onClick={this.searchByName}>Search</button>
                     </form>
                     <div className="random-cocktail-container">
                         <button className="random-cocktail" onClick={this.getRandomCocktail}>Pick a random cocktail</button>
