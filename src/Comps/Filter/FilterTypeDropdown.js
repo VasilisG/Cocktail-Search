@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 class FilterTypeDropdown extends Component {
 
     COCKTAIL_TYPE_FILTER_URL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=";
+    COCKTAIL_INFO_ID_URL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
 
     constructor(){
         super();
@@ -15,17 +16,24 @@ class FilterTypeDropdown extends Component {
             fetch(this.COCKTAIL_TYPE_FILTER_URL + type)
             .then(response => response.json())
             .then(data => {
-                var drinks = data['drinks'].slice(0,10);
-                drinks = drinks.map(function(drink) {
-                    return {
-                        'name' : drink['strDrink'],
-                        'category' : drink['strCategory'],
-                        'alcoholic' : drink['strAlcoholic'],
-                        'instructions' : drink['strInstructions'],
-                        'image' : drink['strDrinkThumb'] + '/preview'
-                    }
+                var IDs = data['drinks'].slice(0,10).map((id) => {return id['idDrink']});
+                Promise.all(IDs.map((id) => fetch(this.COCKTAIL_INFO_ID_URL + id)))
+                .then((responses) => {
+                    return Promise.all(responses.map(function (response) {
+                        return response.json();
+                    }));
+                })
+                .then((data) => {
+                    data = data.map((elem) => elem['drinks'][0])
+                        .map((elem) => { return {
+                            'name' : elem['strDrink'],
+                            'category' : elem['strCategory'],
+                            'alcoholic' : elem['strAlcoholic'],
+                            'instructions' : elem['strInstructions'],
+                            'image' : elem['strDrinkThumb'] + '/preview'
+                    }});
+                    this.props.callBack(data);
                 });
-                this.props.callBack(drinks);
             });
         }
     }

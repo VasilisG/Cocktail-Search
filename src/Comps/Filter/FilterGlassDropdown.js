@@ -4,6 +4,7 @@ class FilterGlassDropdown extends Component {
 
     COCKTAIL_GLASSES_URL = "https://www.thecocktaildb.com/api/json/v1/1/list.php?g=list";
     COCKTAIL_GLASSES_FILTER_URL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=";
+    COCKTAIL_INFO_ID_URL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
 
     constructor(props){
         super(props);
@@ -30,17 +31,24 @@ class FilterGlassDropdown extends Component {
             fetch(this.COCKTAIL_GLASSES_FILTER_URL + glass)
             .then(response => response.json())
             .then(data => {
-                var drinks = data['drinks'].slice(0,10);
-                drinks = drinks.map(function(drink) {
-                    return {
-                        'name' : drink['strDrink'],
-                        'category' : drink['strCategory'],
-                        'alcoholic' : drink['strAlcoholic'],
-                        'instructions' : drink['strInstructions'],
-                        'image' : drink['strDrinkThumb'] + '/preview'
-                    }
+                var IDs = data['drinks'].slice(0,10).map((id) => {return id['idDrink']});
+                Promise.all(IDs.map((id) => fetch(this.COCKTAIL_INFO_ID_URL + id)))
+                .then((responses) => {
+                    return Promise.all(responses.map(function (response) {
+                        return response.json();
+                    }));
+                })
+                .then((data) => {
+                    data = data.map((elem) => elem['drinks'][0])
+                        .map((elem) => { return {
+                            'name' : elem['strDrink'],
+                            'category' : elem['strCategory'],
+                            'alcoholic' : elem['strAlcoholic'],
+                            'instructions' : elem['strInstructions'],
+                            'image' : elem['strDrinkThumb'] + '/preview'
+                    }});
+                    this.props.callBack(data);
                 });
-                this.props.callBack(drinks);
             });
         }
     }
