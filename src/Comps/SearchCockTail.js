@@ -27,16 +27,18 @@ class SearchCockTail extends Component {
         fetch(url)
         .then(response => response.json())
         .then(data => {
-            var drinks = data['drinks'].slice(0,10);
-            drinks = drinks.map(function(drink) {
-                return {
-                    'name' : drink['strDrink'],
-                    'category' : drink['strCategory'],
-                    'alcoholic' : drink['strAlcoholic'],
-                    'instructions' : drink['strInstructions'],
-                    'image' : drink['strDrinkThumb'] + '/preview'
-                }
-            });
+            var drinks = [];
+            if(data['drinks'] != null){
+                drinks = data['drinks'].slice(0,10).map(function(drink) {
+                    return {
+                        'name' : drink['strDrink'],
+                        'category' : drink['strCategory'],
+                        'alcoholic' : drink['strAlcoholic'],
+                        'instructions' : drink['strInstructions'],
+                        'image' : drink['strDrinkThumb'] + '/preview'
+                    }
+                });
+            }
             this.setState({drinks : drinks});
             this.props.callBack(drinks);
         });
