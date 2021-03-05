@@ -165,12 +165,16 @@ footer {
 .ingredient-item {
   height: 345px;
   /* background-color:#54b2c2; */
-  font-weight: bold;
   letter-spacing: 0.7px;
   cursor: pointer;
   user-select: none;
   transition: 0.2s ease;
   perspective: 1000px;
+}
+
+.ingredient-item span {
+  display: block;
+  font-weight: bold;
 }
 
 .ingredient-item-inner {
@@ -226,7 +230,8 @@ footer {
 .ingredient-item .main-info .main-info-inner .item {
   font-size: 20px;
   padding: 0px 10px;
-  text-align: left;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .ingredient-item .main-title:hover {
@@ -399,15 +404,32 @@ footer {
   border: 1px solid #fff;
 }
 
-@media screen and (max-width: 1220px) {
+@media screen and (max-width: 1900px) {
+  .ingredient-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 1500px) {
   .search-cocktail-form, .random-cocktail-container, .cocktail-letter-container, .filter-cocktail-container-inner {
     width: 75%;
+  }
+}
+
+@media screen and (max-width:1270px) {
+  .ingredient-list {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media screen and (max-width: 910px) {
   .search-cocktail-form, .random-cocktail-container, .cocktail-letter-container, .filter-cocktail-container-inner {
     width: 90%;
+  }
+
+  .ingredient-list {
+    width: 100%;
+    margin: 0;
   }
 }
 
@@ -424,5 +446,76 @@ footer {
     width: 75%;
     margin: auto;
     margin-bottom: 30px;
+  }
+
+  header {
+    flex-direction: column;
+  }
+
+  .title-container {
+    margin-bottom: 20px;
+  }
+
+  .random-cocktail {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .cocktail-name-input {
+    width: 60%;
+  }
+
+  .cocktail-name-search-button {
+    width: 35%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .ingredient-list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .ingredient-item .main-title, .ingredient-item .main-info {
+    box-shadow: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .cocktail-item {
+    flex-direction: column;
+  }
+
+  .cocktail-item .image {
+    text-align: center;
+    margin: 0;
+  }
+
+  .cocktail-item .title {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .cocktail-item .category, .cocktail-item .type, .cocktail-item .instructions {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .cocktail-item .info p strong {
+    display: block;
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  main {
+    margin: 0px 5px;
+  }
+
+  .cocktail-name-search-button {
+    width: 30%;
+  }
+
+  .filter-cocktail-container-inner > div {
+    width: 90%;
   }
 }
