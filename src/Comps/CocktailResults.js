@@ -11,7 +11,9 @@ class CocktailResults extends Component {
                 </ul>
             </div>
         ) : (
-            <div className="cocktail-items-container"></div>
+            <div className="cocktail-items-container">
+                <p className="no-items">There are no items to show.</p>
+            </div>
         )
     }
 }

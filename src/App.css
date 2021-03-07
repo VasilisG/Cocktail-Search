@@ -404,6 +404,14 @@ footer {
   border: 1px solid #fff;
 }
 
+.no-items {
+  margin: 20px 0px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  opacity: 0.5;
+}
+
 @media screen and (max-width: 1900px) {
   .ingredient-list {
     grid-template-columns: repeat(3, 1fr);
@@ -517,5 +525,11 @@ footer {
 
   .filter-cocktail-container-inner > div {
     width: 90%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .no-items {
+    font-size: 18px;
   }
 }
