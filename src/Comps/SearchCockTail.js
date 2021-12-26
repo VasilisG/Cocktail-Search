@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
+import {SEARCH_BY_NAME_URL, SEARCH_BY_LETTER_URL, GET_RANDOM_COCKTAIL_URL} from './Constants';
 
 class SearchCockTail extends Component {
-
-    SEARCH_BY_NAME_URL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
-    SEARCH_BY_LETTER_URL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=";
-    GET_RANDOM_COCKTAIL_URL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
     constructor(props) {
         super(props);
@@ -47,16 +44,16 @@ class SearchCockTail extends Component {
     searchByName(event) {
         event.preventDefault();
         if(this.state.lastSearchName.length > 0){
-            this.fetchCocktails(this.SEARCH_BY_NAME_URL + this.state.lastSearchName);
+            this.fetchCocktails(SEARCH_BY_NAME_URL + this.state.lastSearchName);
         }
     }
 
     searchByLetter(event){
-        this.fetchCocktails(this.SEARCH_BY_LETTER_URL + event.target.value)
+        this.fetchCocktails(SEARCH_BY_LETTER_URL + event.target.value)
     }
 
     getRandomCocktail() {
-        this.fetchCocktails(this.GET_RANDOM_COCKTAIL_URL);
+        this.fetchCocktails(GET_RANDOM_COCKTAIL_URL);
     }
 
     render(){

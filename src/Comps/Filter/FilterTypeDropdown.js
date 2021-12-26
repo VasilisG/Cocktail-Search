@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
+import {COCKTAIL_TYPE_FILTER_URL, COCKTAIL_INFO_ID_URL} from '../Constants';
 
 class FilterTypeDropdown extends Component {
-
-    COCKTAIL_TYPE_FILTER_URL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=";
-    COCKTAIL_INFO_ID_URL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
 
     constructor(){
         super();
@@ -13,11 +11,11 @@ class FilterTypeDropdown extends Component {
     getCocktails(event){
         var type = event.target.value;
         if(type !== ""){
-            fetch(this.COCKTAIL_TYPE_FILTER_URL + type)
+            fetch(COCKTAIL_TYPE_FILTER_URL + type)
             .then(response => response.json())
             .then(data => {
                 var IDs = data['drinks'].slice(0,10).map((id) => {return id['idDrink']});
-                Promise.all(IDs.map((id) => fetch(this.COCKTAIL_INFO_ID_URL + id)))
+                Promise.all(IDs.map((id) => fetch(COCKTAIL_INFO_ID_URL + id)))
                 .then((responses) => {
                     return Promise.all(responses.map(function (response) {
                         return response.json();

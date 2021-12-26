@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
+import {COCKTAIL_CATEGORIES_URL, COCKTAIL_CATEGORIES_FILTER_URL, COCKTAIL_INFO_ID_URL} from '../Constants';
 
 class FilterCategoryDropdown extends Component {
-
-    COCKTAIL_CATEGORIES_URL = "https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list";
-    COCKTAIL_CATEGORIES_FILTER_URL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=";
-    COCKTAIL_INFO_ID_URL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
 
     constructor(props) {
         super(props);
@@ -15,7 +12,7 @@ class FilterCategoryDropdown extends Component {
     }
 
     componentDidMount() {
-        fetch(this.COCKTAIL_CATEGORIES_URL)
+        fetch(COCKTAIL_CATEGORIES_URL)
         .then(response => response.json())
         .then(data => {
             var drinks = data['drinks'];
@@ -28,11 +25,11 @@ class FilterCategoryDropdown extends Component {
     getCocktails(event){
         var category = event.target.value;
         if(category !== ''){
-            fetch(this.COCKTAIL_CATEGORIES_FILTER_URL + category)
+            fetch(COCKTAIL_CATEGORIES_FILTER_URL + category)
             .then(response => response.json())
             .then(data => {
                 var IDs = data['drinks'].slice(0,10).map((id) => {return id['idDrink']});
-                Promise.all(IDs.map((id) => fetch(this.COCKTAIL_INFO_ID_URL + id)))
+                Promise.all(IDs.map((id) => fetch(COCKTAIL_INFO_ID_URL + id)))
                 .then((responses) => {
                     return Promise.all(responses.map(function (response) {
                         return response.json();

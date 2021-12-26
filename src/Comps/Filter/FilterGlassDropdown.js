@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
+import {COCKTAIL_GLASSES_URL, COCKTAIL_GLASSES_FILTER_URL, COCKTAIL_INFO_ID_URL} from '../Constants';
 
 class FilterGlassDropdown extends Component {
-
-    COCKTAIL_GLASSES_URL = "https://www.thecocktaildb.com/api/json/v1/1/list.php?g=list";
-    COCKTAIL_GLASSES_FILTER_URL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=";
-    COCKTAIL_INFO_ID_URL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
 
     constructor(props){
         super(props);
@@ -15,7 +12,7 @@ class FilterGlassDropdown extends Component {
     }
 
     componentDidMount() {
-        fetch(this.COCKTAIL_GLASSES_URL)
+        fetch(COCKTAIL_GLASSES_URL)
         .then(response => response.json())
         .then(data => {
             var glasses = data['drinks'];
@@ -28,11 +25,11 @@ class FilterGlassDropdown extends Component {
     getCocktails(event) {
         var glass = event.target.value;
         if(glass !== ''){
-            fetch(this.COCKTAIL_GLASSES_FILTER_URL + glass)
+            fetch(COCKTAIL_GLASSES_FILTER_URL + glass)
             .then(response => response.json())
             .then(data => {
                 var IDs = data['drinks'].slice(0,10).map((id) => {return id['idDrink']});
-                Promise.all(IDs.map((id) => fetch(this.COCKTAIL_INFO_ID_URL + id)))
+                Promise.all(IDs.map((id) => fetch(COCKTAIL_INFO_ID_URL + id)))
                 .then((responses) => {
                     return Promise.all(responses.map(function (response) {
                         return response.json();
