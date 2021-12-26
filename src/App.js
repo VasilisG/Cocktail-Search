@@ -12,9 +12,10 @@ class App extends Component {
     return (
       <Router>
           <Header/>
-          <Route path="/"><Cocktail/></Route>
-          <Route exact path="/cocktails"><Cocktail/></Route>
-          <Route exact path="/ingredients"><Ingredient/></Route>
+          <Route exact path="/"><Cocktail/></Route>
+          <Route path="/Cocktail-Search"><Cocktail/></Route>
+          <Route path="/cocktails"><Cocktail/></Route>
+          <Route path="/ingredients"><Ingredient/></Route>
           <Footer/>
       </Router>
     );
