@@ -5,7 +5,7 @@ class Footer extends Component {
         return (
             <footer>
                 <p className="copyright">
-                    It's a React project to familiarize with the framework.
+                    It's a React project to familiarize with the library.
                 </p>
             </footer>
         )
