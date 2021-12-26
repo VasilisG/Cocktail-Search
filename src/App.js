@@ -13,8 +13,8 @@ class App extends Component {
       <Router>
           <Header/>
           <Route path="/"><Cocktail/></Route>
-          <Route path="/cocktails"><Cocktail/></Route>
-          <Route path="/ingredients"><Ingredient/></Route>
+          <Route exact path="/cocktails"><Cocktail/></Route>
+          <Route exact path="/ingredients"><Ingredient/></Route>
           <Footer/>
       </Router>
     );
