@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <Router>
           <Header/>
-          <Route exact path="/"><Redirect to="/cocktails"/></Route>
+          <Route exact path="/"><Cocktail/></Route>
           <Route path="/cocktails"><Cocktail/></Route>
           <Route path="/ingredients"><Ingredient/></Route>
           <Footer/>
