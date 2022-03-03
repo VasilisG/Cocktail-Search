@@ -303,7 +303,6 @@ footer {
   padding: 10px;
   width: 30%;
   min-width: 350px;
-  margin-bottom: 30px;
   border-radius: 30px;
 }
 
@@ -321,7 +320,7 @@ footer {
 .cocktail-letter-container {
   width: 50%;
   margin: auto;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 .cocktail-letter-inner-container {
